@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Bootstrap 101 Template</title>
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+             <?php
+             include("conn.php");
+             $sql_pro="select * from promotion";
+             $res_pro=mysqli_query($conn,$sql_pro);
+             $nub_data=mysqli_num_rows($res_pro);
+             $i=0;
+             $active="active";
+             $nub_i=array();
+             ?>
+        <div id="carousel-example-generic" class=" carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+            <?php for($j=0;$j<$nub_data;) { ?>
+                <li data-target="#carousel-example-generic" data-slide-to="<?php echo $j?>" <?php if($j==1){echo 'class="active"';}?>></li>
+          <?php $j++; } ?>
+                      </ol>
+                <!-- Wrapper for slides -->
+            
+                <div class="size1 carousel-inner" role="listbox">
+         <?php
+             while ($row_pro=mysqli_fetch_assoc($res_pro)) {
+                ?>
+
+                    <div class=" item <?php if($i==1){echo $active;}?>">
+                        <img src="promotion/<?php echo $row_pro['image']?>" alt="..."  width="100%" >
+                        <div class="carousel-caption">
+                            ...
+                        </div>
+                    </div>
+                 <?php  $i++; } ?>
+                    </div>
+                  
+                </div>
+
+                <!-- Controls -->
+
+            </div>
+
+
+    </body>
+</html>

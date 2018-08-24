@@ -1,0 +1,36 @@
+
+  <?php 
+include("../conn.php");
+
+  $sql = "select* from evaluation";
+  $res=mysqli_query($conn,$sql);
+  ?>
+<table class="table table-striped table-condensed table-hover">
+<center><img src="../image/1123.png" height="80"width="90"></center>
+<center><a href="formAddevaluation.php">เพิ่มข้อมูล</a></center>
+<tr>
+	<th class=" danger">หัวข้อ</th>
+	<th class=" danger">คำถาม</th>
+	<th class=" danger">แก้ไข</th>
+	<th class=" danger">ลบ</th>
+
+</tr>
+  <?php
+  while($row=mysqli_fetch_assoc($res)){
+	 // echo $row[ID]." - ".$row[Name]." - ".$row[Pic]."<br/>";
+?>
+
+<tr>
+	<td class=" success"><?php echo $row[eva_id] ?></td>
+	<td class=" success"><?php echo $row[title] ?></td>
+	<td class=" success"><a href="formEditevaluation.php?id=<?php echo $row[eva_id] ?>"><font  color="#000000"><img src="../image/eDIT.png"width="20"height="20">แก้ไข</a></td>
+	<td class=" success"><a href="delevaluation.php?id=<?php echo $row[eva_id] ?>"><font  color="#000000"><img src="../image/delete.png"width="20"height="20">ลบ</font></a></td>
+	
+</tr>
+<?php
+  }
+  
+  
+  ?>
+</table>
+

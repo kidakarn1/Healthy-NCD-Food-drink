@@ -1,0 +1,17 @@
+<?php 
+$host="localhost";
+$user="root";
+$password="12345678";
+$dbname="ncd_data";
+$conn= mysqli_connect($host,$user,$password,$dbname);
+mysqli_set_charset($conn,'utf8');
+//header('Content-Type: text/html; charset=utf-8');
+//isset($conn) ? echo"เชื่อมต่อฐานข้อมูลได้" : echo"การเชื่อมต่อมีปัญหา";
+//if(!isset($conn)?$conn:'การเชื่อมต่อมีปัญหา')echo 'เชื่อมต่อได้';
+//($conn ? $conn : 'Guest');
+if (!$conn){
+echo"เขื่อมต่อฐานข้อมูลไม่ได้"; 
+}
+
+
+?>
